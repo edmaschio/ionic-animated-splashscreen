@@ -1,12 +1,6 @@
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SplashPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'page-splash',
@@ -14,11 +8,13 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SplashPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public viewCtrl: ViewController, public splashScreen: SplashScreen) {}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SplashPage');
-  }
+  ionViewDidEnter() {
+    this.splashScreen.hide();
 
+    setTimeout(() => {
+      this.viewCtrl.dismiss();
+    }, 4000);
+  }
 }
